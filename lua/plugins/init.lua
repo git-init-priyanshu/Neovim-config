@@ -44,7 +44,7 @@ return {
   -- Autocompletion
   {
   	"nvimtools/none-ls.nvim",
-    event = "VeryLazy",
+    lazy = false,
   	opts = function ()
       return require("configs.none_ls")
   	end,
@@ -63,18 +63,10 @@ return {
       require("nvim-ts-autotag").setup()
     end
   },
-  -- Monokai theme
-  -- {
-  --   "tanvirtin/monokai.nvim",
-  --   event = "VeryLazy",
-  --   config = function ()
-  --     require("monokai").setup()
-  --    end
-  -- },
   -- Session manager
   {
     "rmagatti/auto-session",
-    event = "VeryLazy",
+    lazy = false,
     config = function ()
       require("auto-session").setup({
         log_level = "error",
@@ -89,25 +81,22 @@ return {
       })
      end
   },
-  -- Session manager
+  -- Undo tree
   {
-    "mbbill/undotree",
-    event = "VeryLazy",
-    -- config = function ()
-    --   require("undotree").setup()
-    --  end
+    "mbbill/undotree", -- <leader>u
+    lazy = false,
   },
   -- Session manager
   {
     "pocco81/auto-save.nvim",
-    event = "VeryLazy",
+    lazy = false,
     config = function()
       require "configs.auto-save"
     end,
   },
   {
     'JoosepAlviste/nvim-ts-context-commentstring',
-    event = "VeryLazy",
+    lazy = false,
     config = function ()
       require("ts_context_commentstring").setup({
         enable_autocmd = false,
