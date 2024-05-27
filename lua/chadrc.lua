@@ -10,7 +10,9 @@ M.ui = {
     monekai = {
       base_16 = {
         base08 = "#ffffff",
-        base0B = "#d6bc63"
+        base0A = "#a6e22d",
+        base0B = "#d6bc63",
+        base0C = "#f92672"
       },
     }
   }
