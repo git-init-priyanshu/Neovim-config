@@ -5,15 +5,15 @@
 local M = {}
 
 M.ui = {
-	theme = "catppuccin",
-  cmp = {
-    style = "flat_dark"
+	theme = "monekai",
+  changed_themes = {
+    monekai = {
+      base_16 = {
+        base08 = "#ffffff",
+        base0B = "#d6bc63"
+      },
+    }
   }
-
-	-- hl_override = {
-	-- 	Comment = { italic = true },
-	-- 	["@comment"] = { italic = true },
-	-- },
 }
 
 M.plugins = "plugins.custom"

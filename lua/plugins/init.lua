@@ -37,7 +37,7 @@ return {
   			"vim", "lua", "vimdoc",
        "html", "css", "javascript",
         "typescript", "tsx", "go",
-        "rust",
+        "rust", "markdown"
   		},
   	},
   },
