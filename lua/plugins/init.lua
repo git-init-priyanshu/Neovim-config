@@ -3,18 +3,6 @@ return {
   {
     "stevearc/conform.nvim",
     lazy = false,
-    -- event = 'BufWritePre', -- uncomment for format on save
-    -- keys = {
-    --   {
-    --     -- Customize or remove this keymap to your liking
-    --     "<C-s>",
-    --     function()
-    --       require("conform").format { async = true, lsp_fallback = true }
-    --     end,
-    --     mode = "",
-    --     desc = "Format buffer",
-    --   },
-    -- },
     config = function()
       require "configs.conform"
     end,
@@ -119,6 +107,16 @@ return {
     lazy = false,
     config = function()
       require "configs.auto-save"
+    end,
+  },
+  -- comments
+  {
+    "numToStr/Comment.nvim",
+    lazy = false,
+    config = function()
+      require("Comment").setup {
+        pre_hook = require("ts_context_commentstring.integrations.comment_nvim").create_pre_hook(),
+      }
     end,
   },
   -- -- Concext aware comments for JSX
