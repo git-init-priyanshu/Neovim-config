@@ -1,13 +1,25 @@
 return {
-  -- Formatter 
+  -- Formatter
   {
     "stevearc/conform.nvim",
-    event = 'BufWritePre', -- uncomment for format on save
+    lazy = false,
+    -- event = 'BufWritePre', -- uncomment for format on save
+    -- keys = {
+    --   {
+    --     -- Customize or remove this keymap to your liking
+    --     "<C-s>",
+    --     function()
+    --       require("conform").format { async = true, lsp_fallback = true }
+    --     end,
+    --     mode = "",
+    --     desc = "Format buffer",
+    --   },
+    -- },
     config = function()
       require "configs.conform"
     end,
   },
-  -- LSP
+  -- -- LSP
   {
     "neovim/nvim-lspconfig",
     config = function()
@@ -15,41 +27,56 @@ return {
       require "configs.lspconfig"
     end,
   },
-  -- LSP manger
+  -- -- LSP manger
   {
-  	"williamboman/mason.nvim",
-  	opts = {
-  		ensure_installed = {
+    "williamboman/mason.nvim",
+    opts = {
+      ensure_installed = {
         "typescript-language-server",
         "tailwindcss-language-server",
         "eslint-lsp",
         "prettierd",
-  			"lua-language-server", "stylua",
-  			"html-lsp", "css-lsp" , "prettier"
-  		},
-  	},
+        "lua-language-server",
+        "stylua",
+        "html-lsp",
+        "css-lsp",
+        "prettier",
+      },
+    },
   },
-  -- Treesitter
+  -- -- Treesitter
   {
-  	"nvim-treesitter/nvim-treesitter",
-  	opts = {
-  		ensure_installed = {
-  			"vim", "lua", "vimdoc",
-       "html", "css", "javascript",
-        "typescript", "tsx", "go",
-        "rust", "markdown"
-  		},
-  	},
+    "nvim-treesitter/nvim-treesitter",
+    opts = {
+      ensure_installed = {
+        "vim",
+        "lua",
+        "vimdoc",
+        "html",
+        "css",
+        "javascript",
+        "typescript",
+        "tsx",
+        "go",
+        "rust",
+        "markdown",
+      },
+    },
   },
-  -- Autocompletion
+  -- -- Autocompletion
+  -- {
+  -- 	"nvimtools/none-ls.nvim",
+  --   lazy = false,
+  -- 	opts = function ()
+  --     return require("configs.none_ls")
+  -- 	end,
+  -- },
+  -- -- Git integration
   {
-  	"nvimtools/none-ls.nvim",
-    lazy = false,
-  	opts = function ()
-      return require("configs.none_ls")
-  	end,
+    "tpope/vim-fugitive",
+    event = "VeryLazy",
   },
-  -- Auto tags for HTML
+  -- -- Auto tags for HTML
   {
     "windwp/nvim-ts-autotag",
     ft = {
@@ -57,18 +84,18 @@ return {
       "javascriptreact",
       "typescript",
       "typescriptreact",
-      "html"
+      "html",
     },
-    config = function ()
+    config = function()
       require("nvim-ts-autotag").setup()
-    end
+    end,
   },
-  -- Session manager
+  -- -- Session manager
   {
     "rmagatti/auto-session",
     lazy = false,
-    config = function ()
-      require("auto-session").setup({
+    config = function()
+      require("auto-session").setup {
         log_level = "error",
 
         cwd_change_handling = {
@@ -78,15 +105,15 @@ return {
             require("lualine").refresh() -- refresh lualine so the new session name is displayed in the status bar
           end,
         },
-      })
-     end
+      }
+    end,
   },
-  -- Undo tree
+  -- -- Undo tree
   {
     "mbbill/undotree", -- <leader>u
     lazy = false,
   },
-  -- Session manager
+  -- -- Auto save
   {
     "pocco81/auto-save.nvim",
     lazy = false,
@@ -94,18 +121,14 @@ return {
       require "configs.auto-save"
     end,
   },
+  -- -- Concext aware comments for JSX
   {
-    'JoosepAlviste/nvim-ts-context-commentstring',
+    "JoosepAlviste/nvim-ts-context-commentstring",
     lazy = false,
-    config = function ()
-      require("ts_context_commentstring").setup({
+    config = function()
+      require("ts_context_commentstring").setup {
         enable_autocmd = false,
-      })
-    end
+      }
+    end,
   },
-  {
-    'tpope/vim-fugitive',
-    event = "VeryLazy",
-  }
-
 }
