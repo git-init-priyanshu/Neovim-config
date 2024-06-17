@@ -7,7 +7,7 @@ return {
       require "configs.conform"
     end,
   },
-  -- -- LSP
+  -- LSP
   {
     "neovim/nvim-lspconfig",
     config = function()
@@ -15,7 +15,7 @@ return {
       require "configs.lspconfig"
     end,
   },
-  -- -- LSP manger
+  -- LSP manger
   {
     "williamboman/mason.nvim",
     opts = {
@@ -29,10 +29,11 @@ return {
         "html-lsp",
         "css-lsp",
         "prettier",
+        "gopls",
       },
     },
   },
-  -- -- Treesitter
+  -- Treesitter
   {
     "nvim-treesitter/nvim-treesitter",
     opts = {
@@ -51,7 +52,7 @@ return {
       },
     },
   },
-  -- -- Autocompletion
+  -- Autocompletion
   -- {
   -- 	"nvimtools/none-ls.nvim",
   --   lazy = false,
@@ -59,12 +60,12 @@ return {
   --     return require("configs.none_ls")
   -- 	end,
   -- },
-  -- -- Git integration
+  -- Git integration
   {
     "tpope/vim-fugitive",
     event = "VeryLazy",
   },
-  -- -- Auto tags for HTML
+  -- Auto tags for HTML
   {
     "windwp/nvim-ts-autotag",
     ft = {
@@ -78,7 +79,7 @@ return {
       require("nvim-ts-autotag").setup()
     end,
   },
-  -- -- Session manager
+  -- Session manager
   {
     "rmagatti/auto-session",
     lazy = false,
@@ -96,12 +97,12 @@ return {
       }
     end,
   },
-  -- -- Undo tree
+  -- Undo tree
   {
     "mbbill/undotree", -- <leader>u
     lazy = false,
   },
-  -- -- Auto save
+  -- Auto save
   {
     "pocco81/auto-save.nvim",
     lazy = false,
@@ -119,7 +120,7 @@ return {
       }
     end,
   },
-  -- -- Concext aware comments for JSX
+  -- Concext aware comments for JSX
   {
     "JoosepAlviste/nvim-ts-context-commentstring",
     lazy = false,
@@ -127,6 +128,38 @@ return {
       require("ts_context_commentstring").setup {
         enable_autocmd = false,
       }
+    end,
+  },
+  -- Golang
+  {
+    "olexsmir/gopher.nvim",
+    ft = "go",
+    config = function(_, opts)
+      require("gopher").setup {
+        commands = {
+          go = "go",
+          gomodifytags = "gomodifytags",
+          gotests = "gotests",
+          impl = "impl",
+          iferr = "iferr",
+          dlv = "dlv",
+        },
+        gotests = {
+          -- gotests doesn't have template named "default" so this plugin uses "default" to set the default template
+          template = "default",
+          -- path to a directory containing custom test code templates
+          template_dir = nil,
+          -- switch table tests from using slice to map (with test name for the key)
+          -- works only with gotests installed from develop branch
+          named = false,
+        },
+        gotag = {
+          transform = "snakecase",
+        },
+      }
+    end,
+    build = function()
+      vim.cmd.GoInstallDeps()
     end,
   },
 }
