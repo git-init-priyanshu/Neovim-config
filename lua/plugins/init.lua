@@ -52,14 +52,20 @@ return {
       },
     },
   },
+  -- Snippet engine
+  {
+    "L3MON4D3/LuaSnip",
+    dependencies = {
+      "saadparwaiz1/cmp_luasnip",
+      "rafamadriz/friendly-snippets"
+    },
+    lazy= false,
+  },
   -- Autocompletion
-  -- {
-  -- 	"nvimtools/none-ls.nvim",
-  --   lazy = false,
-  -- 	opts = function ()
-  --     return require("configs.none_ls")
-  -- 	end,
-  -- },
+  {
+    "hrsh7th/nvim-cmp",
+    lazy = false,
+  },
   -- Git integration
   {
     "tpope/vim-fugitive",

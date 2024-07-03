@@ -5,7 +5,7 @@ local map = vim.keymap.set
 
 -- My keymaps
 map("i", "kj", "<Esc>")
-map({ "n", "i", "v" }, "<C-s>", "<cmd> :Format <cr>")
+map({ "n", "i", "v" }, "<C-s>", "<cmd> :Format <cr>") -- Ctrl - S saves and formats
 map("i", "<C-H>", "<C-w>") -- Makes ctrl + backspace work
 
 map({ "n", "v" }, "<S-h>", "^")
@@ -13,18 +13,24 @@ map({ "n", "v" }, "<S-l>", "$")
 map({ "n", "v" }, "<S-j>", "5j")
 map({ "n", "v" }, "<S-k>", "5k")
 
-map("n", "<C-Up>", "<cmd>resize +2<cr>", { desc = "Increase Window Height" }) -- Windown resize
+-- Windown resize
+map("n", "<C-Up>", "<cmd>resize +2<cr>", { desc = "Increase Window Height" })
 map("n", "<C-Down>", "<cmd>resize -2<cr>", { desc = "Decrease Window Height" })
 map("n", "<C-Left>", "<cmd>vertical resize -2<cr>", { desc = "Decrease Window Width" })
 map("n", "<C-Right>", "<cmd>vertical resize +2<cr>", { desc = "Increase Window Width" })
-
-map({ "n" }, "<A-y>", function() -- Integrated terminal
+--
+-- Integrated terminal
+map({ "n" }, "<A-y>", function()
   require("nvchad.term").toggle { pos = "sp", id = "htoggleTerm" }
 end, { desc = "terminal new horizontal term" })
-
-map("n", "<leader>q", function() -- CLose buffer
+--
+-- CLose tabs
+map("n", "<leader>q", function()
   require("nvchad.tabufline").close_buffer()
 end, { desc = "buffer close" })
+
+-- Show details ( LSP )
+map("n", "<leader>k", vim.lsp.buf.hover)
 
 map("n", "<leader>u", vim.cmd.UndotreeToggle, { desc = "Toggle Undo tree" })
 
