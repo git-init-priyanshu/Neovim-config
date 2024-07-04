@@ -13,6 +13,10 @@ map({ "n", "v" }, "<S-l>", "$")
 map({ "n", "v" }, "<S-j>", "5j")
 map({ "n", "v" }, "<S-k>", "5k")
 
+-- With wrap mode enabled, this will treat wrapped line as different line
+map("n", "j", "gj")
+map("n", "k", "gk")
+
 -- Windown resize
 map("n", "<C-Up>", "<cmd>resize +2<cr>", { desc = "Increase Window Height" })
 map("n", "<C-Down>", "<cmd>resize -2<cr>", { desc = "Decrease Window Height" })
@@ -29,23 +33,31 @@ map("n", "<leader>q", function()
   require("nvchad.tabufline").close_buffer()
 end, { desc = "buffer close" })
 
--- Show details ( LSP )
+-- Find selected word using telescope
+map(
+  "v",
+  "<leader>fs",
+  [[y:<C-u>lua require'telescope.builtin'.find_files({ default_text = vim.fn.getreg('"') })<cr>]],
+  { desc = "find seleced word" }
+)
+
+-- show details ( lsp )
 map("n", "<leader>k", vim.lsp.buf.hover)
 
-map("n", "<leader>u", vim.cmd.UndotreeToggle, { desc = "Toggle Undo tree" })
+map("n", "<leader>u", vim.cmd.undotreetoggle, { desc = "toggle undo tree" })
 
-map("n", "<leader>e", "<cmd>NvimTreeToggle<CR>", { desc = "nvimtree toggle window" })
+map("n", "<leader>e", "<cmd>nvimtreetoggle<cr>", { desc = "nvimtree toggle window" })
 
-map("n", "<A-h>", function() -- Switch buffer
+map("n", "<a-h>", function() -- switch buffer
   require("nvchad.tabufline").prev()
 end, { desc = "buffer goto prev" })
-map("n", "<A-l>", function()
+map("n", "<a-l>", function()
   require("nvchad.tabufline").next()
 end, { desc = "buffer goto next" })
 
-map("n", "<leader>gs", vim.cmd.Git, { desc = "Open Git panel" })
+map("n", "<leader>gs", vim.cmd.git, { desc = "open git panel" })
 
--- Primeagen keymaps
+-- primeagen keymaps
 map("v", "<A-j>", ":m '>+1<CR>gv=gv")
 map("v", "<A-k>", ":m '<-2<CR>gv=gv")
 

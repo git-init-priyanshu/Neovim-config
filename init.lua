@@ -1,6 +1,12 @@
 vim.g.base46_cache = vim.fn.stdpath "data" .. "/nvchad/base46/"
 vim.g.mapleader = " "
-vim.opt.wrap = false
+
+-- Custom sets
+vim.opt.hlsearch = false; -- Stops highlighting search after you leave search
+vim.opt.wrap = true; -- Make overflown line wrap
+vim.opt.termguicolors = true; -- Makes colors looks nice
+vim.opt.cindent = true;
+vim.opt.scrolloff = 5; -- Start to scroll 5 lines before the bottom/top
 
 -- bootstrap lazy and all plugins
 local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
@@ -37,7 +43,4 @@ require "nvchad.autocmds"
 
 vim.schedule(function()
   require "mappings"
-end)
-vim.schedule(function()
-  require "sets"
 end)

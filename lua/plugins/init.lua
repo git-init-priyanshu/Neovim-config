@@ -7,6 +7,23 @@ return {
       require "configs.conform"
     end,
   },
+  -- Telescope
+  {
+    "nvim-telescope/telescope.nvim",
+    opts = function()
+      local conf = require "nvchad.configs.telescope"
+      local actions = require "telescope.actions"
+
+      conf.defaults.mappings.i = {
+        ["<C-j>"] = actions.move_selection_next,
+        ["<C-k>"] = actions.move_selection_previous,
+        ["<Esc>"] = actions.close,
+        ["<C-h>"] = actions.select_horizontal,
+        ["<C-v>"] = actions.select_vertical,
+      }
+      return conf
+    end,
+  },
   -- LSP
   {
     "neovim/nvim-lspconfig",
@@ -57,9 +74,9 @@ return {
     "L3MON4D3/LuaSnip",
     dependencies = {
       "saadparwaiz1/cmp_luasnip",
-      "rafamadriz/friendly-snippets"
+      "rafamadriz/friendly-snippets",
     },
-    lazy= false,
+    lazy = false,
   },
   -- Autocompletion
   {
