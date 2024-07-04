@@ -82,6 +82,22 @@ return {
   {
     "hrsh7th/nvim-cmp",
     lazy = false,
+    opts = function()
+      local conf = require "nvchad.configs.cmp"
+      local cmp = require "cmp"
+
+      conf.mapping = {
+        ["<C-k>"] = cmp.mapping.select_prev_item(),
+        ["<C-j>"] = cmp.mapping.select_next_item(),
+        ["<C-Space>"] = cmp.mapping.complete(),
+        ["<Esc>"] = cmp.mapping.abort(),
+        ["<CR>"] = cmp.mapping.confirm {
+          behavior = cmp.ConfirmBehavior.Insert,
+          select = true,
+        },
+      }
+      return conf
+    end,
   },
   -- Git integration
   {

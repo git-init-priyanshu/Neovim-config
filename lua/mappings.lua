@@ -46,7 +46,7 @@ map("n", "<leader>k", vim.lsp.buf.hover)
 
 map("n", "<leader>u", vim.cmd.undotreetoggle, { desc = "toggle undo tree" })
 
-map("n", "<leader>e", "<cmd>nvimtreetoggle<cr>", { desc = "nvimtree toggle window" })
+map("n", "<leader>e", "<cmd>NvimTreeToggle<cr>", { desc = "nvimtree toggle window" })
 
 map("n", "<a-h>", function() -- switch buffer
   require("nvchad.tabufline").prev()
