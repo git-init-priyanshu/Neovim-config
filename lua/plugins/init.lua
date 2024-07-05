@@ -47,6 +47,7 @@ return {
         "css-lsp",
         "prettier",
         "gopls",
+        "prisma-language-server"
       },
     },
   },
@@ -66,6 +67,7 @@ return {
         "go",
         "rust",
         "markdown",
+        "prisma"
       },
     },
   },
@@ -130,6 +132,7 @@ return {
           restore_upcoming_session = true, -- already the default, no need to specify like this, only here as an example
           pre_cwd_changed_hook = nil, -- already the default, no need to specify like this, only here as an example
           post_cwd_changed_hook = function() -- example refreshing the lualine status line _after_ the cwd changes
+            require("nvim-tree").NvimTreeFocus()
             require("lualine").refresh() -- refresh lualine so the new session name is displayed in the status bar
           end,
         },
