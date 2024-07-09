@@ -17,6 +17,10 @@ map({ "n", "v" }, "<S-k>", "5k")
 map("n", "j", "gj")
 map("n", "k", "gk")
 
+-- Jump to errors
+map("n", "e", vim.diagnostic.goto_next)
+map("n", "E", vim.diagnostic.goto_prev)
+
 -- Windown resize
 map("n", "<C-Up>", "<cmd>resize +2<cr>", { desc = "Increase Window Height" })
 map("n", "<C-Down>", "<cmd>resize -2<cr>", { desc = "Decrease Window Height" })

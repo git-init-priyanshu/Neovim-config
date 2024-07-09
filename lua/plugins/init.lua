@@ -51,7 +51,7 @@ return {
       },
     },
   },
-  -- Treesitter
+  -- Better colors
   {
     "nvim-treesitter/nvim-treesitter",
     opts = {
