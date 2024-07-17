@@ -18,8 +18,8 @@ map("n", "j", "gj")
 map("n", "k", "gk")
 
 -- Jump to errors
-map("n", "e", vim.diagnostic.goto_next)
-map("n", "E", vim.diagnostic.goto_prev)
+map("n", "e", vim.diagnostic.goto_next )
+map("n", "E", vim.diagnostic.goto_prev )
 
 -- Windown resize
 map("n", "<C-Up>", "<cmd>resize +2<cr>", { desc = "Increase Window Height" })
@@ -41,14 +41,14 @@ end, { desc = "buffer close" })
 map(
   "v",
   "<leader>fs",
-  [[y:<C-u>lua require'telescope.builtin'.find_files({ default_text = vim.fn.getreg('"') })<cr>]],
+  [[y:<C-u>lua require'telescope.builtin'.live_grep({ default_text = vim.fn.getreg('"') })<cr>]],
   { desc = "find seleced word" }
 )
 
 -- show details ( lsp )
 map("n", "<leader>k", vim.lsp.buf.hover)
 
-map("n", "<leader>u", vim.cmd.undotreetoggle, { desc = "toggle undo tree" })
+map("n", "<leader>u", "<cmd> :UndotreeToggle <cr>", { desc = "toggle undo tree" })
 
 map("n", "<leader>e", "<cmd>NvimTreeToggle<cr>", { desc = "nvimtree toggle window" })
 
