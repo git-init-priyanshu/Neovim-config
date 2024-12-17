@@ -1,23 +1,29 @@
--- This file  needs to have same structure as nvconfig.lua
--- https://github.com/NvChad/NvChad/blob/v2.5/lua/nvconfig.lua
+-- This file needs to have same structure as nvconfig.lua 
+-- https://github.com/NvChad/ui/blob/v3.0/lua/nvconfig.lua
+-- Please read that file to know all available options :( 
 
 ---@type ChadrcConfig
 local M = {}
 
-M.ui = {
-  theme = "monekai",
+M.base46 = {
+	theme = "monekai",
+
+	-- hl_override = {
+	--	Comment = { italic = true },
+	--	["@comment"] = { italic = true },
+	-- },
+  
   changed_themes = {
     monekai = {
-      base_16 = {
-        base08 = "#ffffff",
-        base0A = "#a6e22d",
-        base0B = "#d6bc63",
-        base0C = "#f92672",
-      },
-    },
-  },
+      base_16 = { 
+        base08 = "#ffffff", -- ( white )
+        base0A = "#a6e22d", -- ( green )
+        base0B = "#d6bc63", -- ( yellow )
+        base0C = "#f92672", -- ( red )
+      } 
+    }
+  }
 }
 
-M.plugins = "plugins.custom"
-
 return M
+
