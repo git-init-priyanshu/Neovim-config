@@ -47,7 +47,7 @@ return {
         "css-lsp",
         "prettier",
         "gopls",
-        "prisma-language-server"
+        "prisma-language-server",
       },
     },
   },
@@ -67,7 +67,7 @@ return {
         "go",
         "rust",
         "markdown",
-        "prisma"
+        "prisma",
       },
     },
   },
