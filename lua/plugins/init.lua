@@ -51,6 +51,11 @@ return {
       },
     },
   },
+  -- tmux
+  {
+    "christoomey/vim-tmux-navigator",
+    lazy = false,
+  },
   -- Better colors
   {
     "nvim-treesitter/nvim-treesitter",

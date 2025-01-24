@@ -13,13 +13,19 @@ map({ "n", "v" }, "<S-l>", "$")
 map({ "n", "v" }, "<S-j>", "5j")
 map({ "n", "v" }, "<S-k>", "5k")
 
+-- Tmux keymaps
+map("n", "<C-h>", "<cmd> TmuxNavigateLeft <CR>", { desc = "window left" })
+map("n", "<C-l>", "<cmd> TmuxNavigateRight <CR>", { desc = "window right" })
+map("n", "<C-j>", "<cmd> TmuxNavigateDown <CR>", { desc = "window down" })
+map("n", "<C-k>", "<cmd> TmuxNavigateUp <CR>", { desc = "window up" })
+
 -- With wrap mode enabled, this will treat wrapped line as different line
 map("n", "j", "gj")
 map("n", "k", "gk")
 
 -- Jump to errors
-map("n", "e", vim.diagnostic.goto_next )
-map("n", "E", vim.diagnostic.goto_prev )
+map("n", "e", vim.diagnostic.goto_next)
+map("n", "E", vim.diagnostic.goto_prev)
 
 -- Windown resize
 map("n", "<C-Up>", "<cmd>resize +2<cr>", { desc = "Increase Window Height" })
