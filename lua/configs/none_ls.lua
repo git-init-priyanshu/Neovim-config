@@ -4,6 +4,9 @@ local null = require("null-ls")
 local opts = {
   sources = {
     null.builtins.formatting.prettierd,
+    null.builtins.diagnostics.mypy,
+    null.builtins.diagnostics.ruff,
+    null.builtins.diagnostics.black,
   },
   on_attach = function (client, bufnr)
     if client.supports_method("textDocument/formatting") then

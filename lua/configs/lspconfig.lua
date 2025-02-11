@@ -15,6 +15,13 @@ for _, lsp in ipairs(servers) do
   }
 end
 
+-- Python
+lspconfig.pyright.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  filetypes = { "python" },
+}
+-- Golang
 lspconfig.gopls.setup {
   on_attach = on_attach,
   on_init = on_init,
@@ -28,7 +35,7 @@ lspconfig.gopls.setup {
       usePlaceholders = true,
       analyses = {
         unusedparams = true,
-      }
+      },
     },
   },
 }

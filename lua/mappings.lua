@@ -4,9 +4,11 @@ require "nvchad.mappings"
 local map = vim.keymap.set
 
 -- My keymaps
-map("i", "kj", "<Esc>")
+map("i", "kj", "<Esc>") -- Exit insert mode
 map({ "n", "i", "v" }, "<C-s>", "<cmd> :Format <cr>") -- Ctrl - S saves and formats
 map("i", "<C-H>", "<C-w>") -- Makes ctrl + backspace work
+map({"n", "v"}, "<tab>", ">0") -- Indent line(s)
+map({"n", "v"}, "<S-tab>", "<0") -- Outdent line(s)
 
 map({ "n", "v" }, "<S-h>", "^")
 map({ "n", "v" }, "<S-l>", "$")
@@ -58,7 +60,8 @@ map("n", "<leader>u", "<cmd> :UndotreeToggle <cr>", { desc = "toggle undo tree" 
 
 map("n", "<leader>e", "<cmd>NvimTreeToggle<cr>", { desc = "nvimtree toggle window" })
 
-map("n", "<a-h>", function() -- switch buffer
+-- Switch Tabs
+map("n", "<a-h>", function()
   require("nvchad.tabufline").prev()
 end, { desc = "buffer goto prev" })
 map("n", "<a-l>", function()
@@ -67,7 +70,7 @@ end, { desc = "buffer goto next" })
 
 map("n", "<leader>gs", vim.cmd.git, { desc = "open git panel" })
 
--- primeagen keymaps
+-- Primeagen keymaps
 map("v", "<A-j>", ":m '>+1<CR>gv=gv")
 map("v", "<A-k>", ":m '<-2<CR>gv=gv")
 

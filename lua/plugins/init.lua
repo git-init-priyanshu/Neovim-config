@@ -37,19 +37,33 @@ return {
     "williamboman/mason.nvim",
     opts = {
       ensure_installed = {
-        "typescript-language-server",
+        -- Lua
+        "lua-language-server",
+        "stylua",
+        -- Ts/Js
         "tailwindcss-language-server",
         "eslint-lsp",
         "prettierd",
-        "lua-language-server",
-        "stylua",
         "html-lsp",
         "css-lsp",
         "prettier",
-        "gopls",
         "prisma-language-server",
+        -- Python
+        "pyright",
+        "mypy",
+        "ruff",
+        "black",
       },
     },
+  },
+  {
+    "nvimtools/none-ls.nvim",
+    dependencies = { "nvimtools/none-ls-extras.nvim", "jayp0521/mason-null-ls.nvim" },
+  },
+  {
+    "pmizio/typescript-tools.nvim",
+    dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+    opts = {},
   },
   -- tmux
   {
