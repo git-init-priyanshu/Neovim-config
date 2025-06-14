@@ -181,7 +181,7 @@ return {
       }
     end,
   },
-  -- Concext aware comments for JSX
+  -- Context aware comments for JSX
   {
     "JoosepAlviste/nvim-ts-context-commentstring",
     lazy = false,
@@ -191,36 +191,12 @@ return {
       }
     end,
   },
-  -- -- Golang
-  -- {
-  --   "olexsmir/gopher.nvim",
-  --   ft = "go",
-  --   config = function(_, opts)
-  --     require("gopher").setup {
-  --       commands = {
-  --         go = "go",
-  --         gomodifytags = "gomodifytags",
-  --         gotests = "gotests",
-  --         impl = "impl",
-  --         iferr = "iferr",
-  --         dlv = "dlv",
-  --       },
-  --       gotests = {
-  --         -- gotests doesn't have template named "default" so this plugin uses "default" to set the default template
-  --         template = "default",
-  --         -- path to a directory containing custom test code templates
-  --         template_dir = nil,
-  --         -- switch table tests from using slice to map (with test name for the key)
-  --         -- works only with gotests installed from develop branch
-  --         named = false,
-  --       },
-  --       gotag = {
-  --         transform = "snakecase",
-  --       },
-  --     }
-  --   end,
-  --   build = function()
-  --     vim.cmd.GoInstallDeps()
-  --   end,
-  -- },
+  -- Surround text
+  {
+    "echasnovski/mini.surround",
+    lazy = false,
+    config = function()
+      require("mini.surround").setup()
+    end,
+  },
 }
