@@ -34,12 +34,12 @@ map("n", "<C-Up>", "<cmd>resize +2<cr>", { desc = "Increase Window Height" })
 map("n", "<C-Down>", "<cmd>resize -2<cr>", { desc = "Decrease Window Height" })
 map("n", "<C-Left>", "<cmd>vertical resize -2<cr>", { desc = "Decrease Window Width" })
 map("n", "<C-Right>", "<cmd>vertical resize +2<cr>", { desc = "Increase Window Width" })
---
+
 -- Integrated terminal
-map({ "n" }, "<A-y>", function()
-  require("nvchad.term").toggle { pos = "sp", id = "htoggleTerm" }
-end, { desc = "terminal new horizontal term" })
---
+-- map({ "n" }, "<A-y>", function()
+--   require("nvchad.term").toggle { pos = "sp", id = "htoggleTerm" }
+-- end, { desc = "terminal new horizontal term" })
+
 -- CLose tabs
 map("n", "<leader>q", function()
   require("nvchad.tabufline").close_buffer()
@@ -59,6 +59,12 @@ map("n", "<leader>k", vim.lsp.buf.hover)
 map("n", "<leader>u", "<cmd> :UndotreeToggle <cr>", { desc = "toggle undo tree" })
 
 map("n", "<leader>e", "<cmd>NvimTreeToggle<cr>", { desc = "nvimtree toggle window" })
+
+-- Git preview change
+map("n", "<leader>gp", ":Gitsigns preview_hunk<CR>", {desc = "Previews changes of that perticular line"})
+
+-- Toggle git blame
+map("n", "<leader>gb", ":Git blame<CR>", {desc = "Toggles git blame window"})
 
 -- Switch Tabs
 map("n", "<a-h>", function()
