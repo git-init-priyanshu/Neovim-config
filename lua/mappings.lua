@@ -7,8 +7,8 @@ local map = vim.keymap.set
 map("i", "kj", "<Esc>") -- Exit insert mode
 map({ "n", "i", "v" }, "<C-s>", "<cmd> :Format <cr>") -- Ctrl - S saves and formats
 map("i", "<C-H>", "<C-w>") -- Makes ctrl + backspace work
-map({"n", "v"}, "<tab>", ">0") -- Indent line(s)
-map({"n", "v"}, "<S-tab>", "<0") -- Outdent line(s)
+map({ "n", "v" }, "<tab>", ">0") -- Indent line(s)
+map({ "n", "v" }, "<S-tab>", "<0") -- Outdent line(s)
 
 map({ "n", "v" }, "<S-h>", "^")
 map({ "n", "v" }, "<S-l>", "$")
@@ -61,10 +61,10 @@ map("n", "<leader>u", "<cmd> :UndotreeToggle <cr>", { desc = "toggle undo tree" 
 map("n", "<leader>e", "<cmd>NvimTreeToggle<cr>", { desc = "nvimtree toggle window" })
 
 -- Git preview change
-map("n", "<leader>gp", ":Gitsigns preview_hunk<CR>", {desc = "Previews changes of that perticular line"})
+map("n", "<leader>gp", ":Gitsigns preview_hunk<CR>", { desc = "Previews changes of that perticular line" })
 
 -- Toggle git blame
-map("n", "<leader>gb", ":Git blame<CR>", {desc = "Toggles git blame window"})
+map("n", "<leader>gb", ":Git blame<CR>", { desc = "Toggles git blame window" })
 
 -- Switch Tabs
 map("n", "<a-h>", function()

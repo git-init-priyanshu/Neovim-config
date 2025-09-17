@@ -46,7 +46,7 @@ return {
         "prettierd",
         "html-lsp",
         "css-lsp",
-        "prettier",
+        -- "prettier",
         "prisma-language-server",
         -- Python
         "pyright",
@@ -58,6 +58,7 @@ return {
   },
   {
     "nvimtools/none-ls.nvim",
+    event = "VeryLazy",
     dependencies = { "nvimtools/none-ls-extras.nvim", "jayp0521/mason-null-ls.nvim" },
   },
   {
