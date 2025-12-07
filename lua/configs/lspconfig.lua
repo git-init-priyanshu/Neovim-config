@@ -2,27 +2,31 @@ local on_attach = require("nvchad.configs.lspconfig").on_attach
 local on_init = require("nvchad.configs.lspconfig").on_init
 local capabilities = require("nvchad.configs.lspconfig").capabilities
 
-local lspconfig = require "lspconfig"
 local util = require "lspconfig/util"
+
+-- List of simple servers
 local servers = { "ts_ls", "tailwindcss", "eslint", "html", "cssls", "prismals" }
 
--- lsps with default config
-for _, lsp in ipairs(servers) do
-  lspconfig[lsp].setup {
+-- Default servers
+for _, server in ipairs(servers) do
+  vim.lsp.config[server] = {
     on_attach = on_attach,
     on_init = on_init,
     capabilities = capabilities,
   }
+  vim.lsp.enable(server)
 end
 
--- Python
-lspconfig.pyright.setup {
+-- Python (pyright)
+vim.lsp.config.pyright = {
   on_attach = on_attach,
   capabilities = capabilities,
   filetypes = { "python" },
 }
--- Golang
-lspconfig.gopls.setup {
+vim.lsp.enable("pyright")
+
+-- Golang (gopls)
+vim.lsp.config.gopls = {
   on_attach = on_attach,
   on_init = on_init,
   capabilities = capabilities,
@@ -39,3 +43,4 @@ lspconfig.gopls.setup {
     },
   },
 }
+vim.lsp.enable("gopls")

@@ -67,12 +67,15 @@ map("n", "<leader>gp", ":Gitsigns preview_hunk<CR>", { desc = "Previews changes 
 map("n", "<leader>gb", ":Git blame<CR>", { desc = "Toggles git blame window" })
 
 -- Switch Tabs
-map("n", "<a-h>", function()
+-- control+h → previous buffer
+vim.keymap.set("n", "<c-h>", function()
   require("nvchad.tabufline").prev()
-end, { desc = "buffer goto prev" })
-map("n", "<a-l>", function()
+end, { desc = "buffer goto prev", silent = true })
+
+-- control+l → next buffer
+vim.keymap.set("n", "<c-l>", function()
   require("nvchad.tabufline").next()
-end, { desc = "buffer goto next" })
+end, { desc = "buffer goto next", silent = true })
 
 map("n", "<leader>gs", vim.cmd.git, { desc = "open git panel" })
 
