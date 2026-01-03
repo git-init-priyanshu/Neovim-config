@@ -6,7 +6,7 @@ local map = vim.keymap.set
 -- My keymaps
 map("i", "kj", "<Esc>") -- Exit insert mode
 map({ "n", "i", "v" }, "<C-s>", "<cmd> :Format <cr>") -- Ctrl - S saves and formats
-map("i", "<C-H>", "<C-w>") -- Makes ctrl + backspace work
+map("i", "^H", "<C-W>", { desc = "Delete previous word", noremap = true, silent = true })
 map({ "n", "v" }, "<tab>", ">0") -- Indent line(s)
 map({ "n", "v" }, "<S-tab>", "<0") -- Outdent line(s)
 
@@ -66,14 +66,12 @@ map("n", "<leader>gp", ":Gitsigns preview_hunk<CR>", { desc = "Previews changes 
 -- Toggle git blame
 map("n", "<leader>gb", ":Git blame<CR>", { desc = "Toggles git blame window" })
 
--- Switch Tabs
--- control+h → previous buffer
-vim.keymap.set("n", "<c-h>", function()
+-- Switch tabs using F11 / F12
+vim.keymap.set("n", "<F11>", function()
   require("nvchad.tabufline").prev()
 end, { desc = "buffer goto prev", silent = true })
 
--- control+l → next buffer
-vim.keymap.set("n", "<c-l>", function()
+vim.keymap.set("n", "<F12>", function()
   require("nvchad.tabufline").next()
 end, { desc = "buffer goto next", silent = true })
 
@@ -86,4 +84,4 @@ map("v", "<A-k>", ":m '<-2<CR>gv=gv")
 map("n", "n", "nzzzv")
 map("n", "N", "Nzzzv")
 
-map("x", "<leader>p", [["_dP]])
+map("x", "P", [["_dP]])
