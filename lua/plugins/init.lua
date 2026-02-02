@@ -53,6 +53,8 @@ return {
         "mypy",
         "ruff",
         "black",
+        -- Go
+        "gopls"
       },
     },
   },

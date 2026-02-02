@@ -5,7 +5,7 @@ local capabilities = require("nvchad.configs.lspconfig").capabilities
 local util = require "lspconfig/util"
 
 -- List of simple servers
-local servers = { "ts_ls", "tailwindcss", "eslint", "html", "cssls", "prismals" }
+local servers = { "ts_ls", "tailwindcss", "eslint", "html", "cssls", "prismals", "gopls" }
 
 -- Default servers
 for _, server in ipairs(servers) do
