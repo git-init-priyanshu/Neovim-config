@@ -6,3 +6,4 @@ local o = vim.o
 o.cursorlineopt ='both' -- to enable cursorline!
 
 vim.g.lazyvim_prettier_needs_config = false
+vim.opt.clipboard = ""

@@ -15,6 +15,9 @@ map({ "n", "v" }, "<S-l>", "$")
 map({ "n", "v" }, "<S-j>", "5j")
 map({ "n", "v" }, "<S-k>", "5k")
 
+-- Paste over selection WITHOUT affecting clipboard
+map("v", "<leader>p", '"_dP')
+
 -- Tmux keymaps
 map("n", "<C-h>", "<cmd> TmuxNavigateLeft <CR>", { desc = "window left" })
 map("n", "<C-l>", "<cmd> TmuxNavigateRight <CR>", { desc = "window right" })
@@ -84,4 +87,9 @@ map("v", "<A-k>", ":m '<-2<CR>gv=gv")
 map("n", "n", "nzzzv")
 map("n", "N", "Nzzzv")
 
-map("x", "P", [["_dP]])
+-- Visual mode: send operations to system clipboard ( Doesn't pollutes the Raycast clipboard history )
+local opts = { noremap = true, silent = true }
+map("v", "y", '"+y', opts)
+map("v", "d", '"+d', opts)
+map("v", "c", '"+c', opts)
+map("v", "x", '"+x', opts)
