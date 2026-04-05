@@ -3,30 +3,44 @@ local on_init = require("nvchad.configs.lspconfig").on_init
 local capabilities = require("nvchad.configs.lspconfig").capabilities
 
 local util = require "lspconfig/util"
+local lspconfig = require "lspconfig"
+
+local has_native_api = vim.lsp and vim.lsp.config and vim.lsp.enable
+
+local function setup_server(server, config)
+  if has_native_api then
+    vim.lsp.config[server] = config
+    vim.lsp.enable(server)
+    return
+  end
+
+  local server_config = lspconfig[server]
+  if server_config then
+    server_config.setup(config)
+  end
+end
 
 -- List of simple servers
 local servers = { "ts_ls", "tailwindcss", "eslint", "html", "cssls", "prismals", "gopls" }
 
 -- Default servers
 for _, server in ipairs(servers) do
-  vim.lsp.config[server] = {
+  setup_server(server, {
     on_attach = on_attach,
     on_init = on_init,
     capabilities = capabilities,
-  }
-  vim.lsp.enable(server)
+  })
 end
 
 -- Python (pyright)
-vim.lsp.config.pyright = {
+setup_server("pyright", {
   on_attach = on_attach,
   capabilities = capabilities,
   filetypes = { "python" },
-}
-vim.lsp.enable("pyright")
+})
 
 -- Golang (gopls)
-vim.lsp.config.gopls = {
+setup_server("gopls", {
   on_attach = on_attach,
   on_init = on_init,
   capabilities = capabilities,
@@ -42,10 +56,9 @@ vim.lsp.config.gopls = {
       },
     },
   },
-}
-vim.lsp.enable("gopls")
+})
 
-vim.lsp.config.rust_analyzer = {
+setup_server("rust_analyzer", {
   on_attach = on_attach,
   on_init = on_init,
   capabilities = capabilities,
@@ -59,5 +72,4 @@ vim.lsp.config.rust_analyzer = {
       },
     },
   },
-}
-vim.lsp.enable("rust_analyzer")
+})
