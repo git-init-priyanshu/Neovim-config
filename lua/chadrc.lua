@@ -8,10 +8,10 @@ local M = {}
 M.base46 = {
   theme = "monekai",
 
-  -- hl_override = {
-  --	Comment = { italic = true },
-  --	["@comment"] = { italic = true },
-  -- },
+  hl_override = {
+    Comment = { italic = true },
+    ["@comment"] = { italic = true },
+  },
   
   changed_themes = {
     monekai = {
@@ -33,4 +33,3 @@ M.base46 = {
 }
 
 return M
-
