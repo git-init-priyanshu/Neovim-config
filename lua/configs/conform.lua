@@ -19,8 +19,9 @@ local options = {
     javascriptreact = { "prettierd", "prettier", stop_after_first = true },
     typescript = { "prettierd", "prettier", stop_after_first = true },
     typescriptreact = { "prettierd", "prettier", stop_after_first = true },
-    python = { "isort" },
+    python = { "isort", "black" },
     go = { "gofmt" },
+    rust = { "rustfmt" },
   },
 
   -- format_on_save = {

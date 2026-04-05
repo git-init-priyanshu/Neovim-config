@@ -44,3 +44,20 @@ vim.lsp.config.gopls = {
   },
 }
 vim.lsp.enable("gopls")
+
+vim.lsp.config.rust_analyzer = {
+  on_attach = on_attach,
+  on_init = on_init,
+  capabilities = capabilities,
+  cmd = { "rust-analyzer" },
+  filetypes = { "rust" },
+  root_dir = util.root_pattern("Cargo.toml", ".git"),
+  settings = {
+    ["rust-analyzer"] = {
+      checkOnSave = {
+        command = "clippy",
+      },
+    },
+  },
+}
+vim.lsp.enable("rust_analyzer")

@@ -53,8 +53,11 @@ return {
         "mypy",
         "ruff",
         "black",
+        "isort",
         -- Go
-        "gopls"
+        "gopls",
+        "rust-analyzer",
+        "rustfmt",
       },
     },
   },
