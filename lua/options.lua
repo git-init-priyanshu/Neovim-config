@@ -13,14 +13,9 @@ local function apply_comment_italic()
 
   for _, group in ipairs(groups) do
     if group:lower():find("comment") then
-      local ok, hl = pcall(vim.api.nvim_get_hl, 0, { name = group, link = false })
+      local ok, hl = pcall(vim.api.nvim_get_hl, 0, { name = group, link = true })
       if ok then
         hl.italic = true
-        if type(hl.cterm) == "table" then
-          hl.cterm.italic = true
-        else
-          hl.cterm = { italic = true }
-        end
         vim.api.nvim_set_hl(0, group, hl)
       end
     end
