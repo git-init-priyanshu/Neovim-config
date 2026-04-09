@@ -11,6 +11,13 @@ M.base46 = {
   hl_override = {
     Comment = { italic = true },
     ["@comment"] = { italic = true },
+    Type = { italic = true },
+    SpecialComment = { italic = true },
+    TSAttribute = { italic = true },
+    TSParameter = { italic = true },
+    TSLabel = { italic = true },
+    TSVariableBuiltin = { italic = true },
+    TSTagAttribute = { italic = true },
   },
   
   changed_themes = {
