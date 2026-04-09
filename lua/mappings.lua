@@ -5,7 +5,17 @@ local map = vim.keymap.set
 
 -- My keymaps
 map("i", "kj", "<Esc>") -- Exit insert mode
-map({ "n", "i", "v" }, "<C-s>", "<cmd> :Format <cr>") -- Ctrl - S saves and formats
+
+local function format_and_save()
+  if vim.api.nvim_get_mode().mode:sub(1, 1) == "i" then
+    vim.cmd "stopinsert"
+  end
+
+  require("conform").format { async = false, lsp_fallback = true }
+  vim.cmd "silent! update"
+end
+
+map({ "n", "i", "v" }, "<C-s>", format_and_save, { desc = "Save and format buffer" }) -- Ctrl - S saves and formats
 map("i", "^H", "<C-W>", { desc = "Delete previous word", noremap = true, silent = true })
 map({ "n", "v" }, "<tab>", ">0") -- Indent line(s)
 map({ "n", "v" }, "<S-tab>", "<0") -- Outdent line(s)
