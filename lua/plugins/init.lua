@@ -4,7 +4,7 @@ return {
   -- Formatter
   {
     "stevearc/conform.nvim",
-    lazy = false,
+    event = "BufWritePre",
     config = function()
       require "configs.conform"
     end,
@@ -83,6 +83,7 @@ return {
   -- Better colors
   {
     "nvim-treesitter/nvim-treesitter",
+    event = { "BufReadPost", "BufNewFile" },
     build = ":TSUpdate",
     opts = function()
       return require "configs.treesitter"
@@ -95,12 +96,12 @@ return {
       "saadparwaiz1/cmp_luasnip",
       "rafamadriz/friendly-snippets",
     },
-    lazy = false,
+    event = { "InsertEnter", "VeryLazy" },
   },
   -- Autocompletion
   {
     "hrsh7th/nvim-cmp",
-    lazy = false,
+    event = "InsertEnter",
     opts = function()
       local conf = require "nvchad.configs.cmp"
       local cmp = require "cmp"
@@ -108,7 +109,7 @@ return {
       conf.mapping = {
         ["<C-k>"] = cmp.mapping.select_prev_item(),
         ["<C-j>"] = cmp.mapping.select_next_item(),
-        ["<C-Space>"] = cmp.mapping.complete(),
+        ["<C-l>"] = cmp.mapping.complete(),
         ["<Esc>"] = cmp.mapping.abort(),
         ["<CR>"] = cmp.mapping.confirm {
           behavior = cmp.ConfirmBehavior.Insert,
@@ -192,7 +193,7 @@ return {
   -- Surround text
   {
     "echasnovski/mini.surround",
-    lazy = false,
+    event = "VeryLazy",
     config = function()
       require("mini.surround").setup()
     end,
@@ -202,9 +203,7 @@ return {
     "mrcjkb/rustaceanvim",
     -- To avoid being surprised by breaking changes,
     version = rustaceanvim_version,
-    -- This plugin implements proper lazy-loading (see :h lua-plugin-lazy).
-    -- No need for lazy.nvim to lazy-load it.
-    lazy = false,
+    ft = "rust",
   },
   -- {
   --   "rust-lang/rust.vim",

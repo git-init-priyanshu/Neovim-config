@@ -1,9 +1,12 @@
 vim.g.base46_cache = vim.fn.stdpath "data" .. "/base46/"
 vim.g.mapleader = " "
 
+-- Speed up Lua module loading
+vim.loader.enable()
+
 -- Custom sets
 vim.opt.hlsearch = false -- Stops highlighting search after you leave search
-vim.opt.wrap = true -- Make overflown line wrap
+vim.opt.wrap = false -- Make overflown line wrap
 vim.opt.termguicolors = true -- Makes colors looks nice
 vim.opt.cindent = true
 vim.opt.scrolloff = 5 -- Start to scroll 5 lines before the bottom/top

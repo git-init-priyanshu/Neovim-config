@@ -42,6 +42,12 @@ setup_server("vtsls", {
     vtsls = {
       enableMoveToFileCodeAction = true,
       autoUseWorkspaceTsdk = true,
+      experimental = {
+        completion = {
+          enableServerSideFuzzyMatch = true,
+          entriesLimit = 20,
+        },
+      },
     },
     typescript = {
       updateImportsOnFileMove = { enabled = "always" },

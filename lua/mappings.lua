@@ -35,8 +35,8 @@ map("n", "<C-j>", "<cmd> TmuxNavigateDown <CR>", { desc = "window down" })
 map("n", "<C-k>", "<cmd> TmuxNavigateUp <CR>", { desc = "window up" })
 
 -- With wrap mode enabled, this will treat wrapped line as different line
-map("n", "j", "gj")
-map("n", "k", "gk")
+-- map("n", "j", "gj")
+-- map("n", "k", "gk")
 
 -- Jump to errors
 map("n", "e", vim.diagnostic.goto_next)
