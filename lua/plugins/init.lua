@@ -43,6 +43,7 @@ return {
         "lua-language-server",
         "stylua",
         -- Ts/Js
+        "vtsls",
         "tailwindcss-language-server",
         "eslint-lsp",
         "prettierd",
@@ -68,11 +69,12 @@ return {
     event = "VeryLazy",
     dependencies = { "nvimtools/none-ls-extras.nvim", "jayp0521/mason-null-ls.nvim" },
   },
-  {
-    "pmizio/typescript-tools.nvim",
-    dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
-    opts = {},
-  },
+  -- {
+  --   "pmizio/typescript-tools.nvim",
+  --   enabled = false,
+  --   dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+  --   opts = {},
+  -- },
   -- tmux
   {
     "christoomey/vim-tmux-navigator",
@@ -81,22 +83,10 @@ return {
   -- Better colors
   {
     "nvim-treesitter/nvim-treesitter",
-    opts = {
-      ensure_installed = {
-        "vim",
-        "lua",
-        "vimdoc",
-        "html",
-        "css",
-        "javascript",
-        "typescript",
-        "tsx",
-        "go",
-        "rust",
-        "markdown",
-        "prisma",
-      },
-    },
+    build = ":TSUpdate",
+    opts = function()
+      return require "configs.treesitter"
+    end,
   },
   -- Snippet engine
   {

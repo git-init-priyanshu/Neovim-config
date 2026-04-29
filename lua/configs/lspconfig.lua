@@ -21,7 +21,7 @@ local function setup_server(server, config)
 end
 
 -- List of simple servers
-local servers = { "ts_ls", "tailwindcss", "eslint", "html", "cssls", "prismals", "gopls" }
+local servers = { "tailwindcss", "eslint", "html", "cssls", "prismals", "gopls" }
 
 -- Default servers
 for _, server in ipairs(servers) do
@@ -31,6 +31,23 @@ for _, server in ipairs(servers) do
     capabilities = capabilities,
   })
 end
+
+-- TypeScript/JavaScript (vtsls)
+setup_server("vtsls", {
+  on_attach = on_attach,
+  on_init = on_init,
+  capabilities = capabilities,
+  settings = {
+    complete_function_calls = true,
+    vtsls = {
+      enableMoveToFileCodeAction = true,
+      autoUseWorkspaceTsdk = true,
+    },
+    typescript = {
+      updateImportsOnFileMove = { enabled = "always" },
+    },
+  },
+})
 
 -- Python (pyright)
 setup_server("pyright", {
